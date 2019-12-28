@@ -1,10 +1,10 @@
 <template>
   <main class="faq">
     <h1>Frenquently Asked Questions</h1>
-    <Loading v-if="loading" />
-    <div class="error" v-if="error">Can't load the questions</div>
+    <Loading v-if="remoteDataBusy" />
+    <div class="error" v-if="hasRemoteErrors">Can't load the questions</div>
     <section class="list">
-      <article v-for="(item,index) in question" :key="index">
+      <article v-for="item in questionList" :key="item._id">
         <h2 v-html="item.title"></h2>
         <p v-html="item.content"></p>
       </article>
@@ -13,32 +13,39 @@
 </template>
 
 <script>
+import RemoteData from '../mixins/RemoteData'
 export default {
-  data() {
-    return {
-      question: [],
-      error: null,
-      loading: false
-    };
-  },
-  async created() {
-    this.loading = true
-    await this.$axios({
-      url: "/questions"
+  mixins:[
+    RemoteData({
+      questionList:'questions'
     })
-      .then(res => {
-        this.question = res.data;
-        console.log(res);
-        if (res.status !== 200) {
-          throw new error("error");
-        }
-      })
-      .catch(e => {
-        console.log(e);
-        this.error = true;
-      });
-      this.loading = false
-  }
+  ]
+  // ,
+  // data() {
+  //   return {
+  //     question: [],
+  //     error: null,
+  //     loading: false
+  //   };
+  // },
+  // async created() {
+  //   this.loading = true;
+  //   await this.$axios({
+  //     url: "questions"
+  //   })
+  //     .then(res => {
+  //       this.question = res.data;
+  //       console.log(res);
+  //       if (res.status !== 200) {
+  //         throw new error("error");
+  //       }
+  //     })
+  //     .catch(e => {
+  //       console.log(e);
+  //       this.error = true;
+  //     });
+  //   this.loading = false;
+  // }
 };
 </script>
 
