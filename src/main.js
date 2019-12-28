@@ -3,14 +3,15 @@ import Vue from 'vue'
 import appLayout from './components/appLayout'
 import VueRouter from 'vue-router'
 import router from './router'
-import axios from 'axios'
 import './global-components'
+import VueAxios from './plugins/axios'
+// import axios from 'axios'
 
-Vue.prototype.$axios = axios
+//注册axios插件
 
-axios.defaults.baseURL = 'http://127.0.0.1:3000'
-
-
+Vue.use(VueAxios,{
+  baseUrl:'http://localhost:3000/'
+})
 
 
 //注册路由插件
