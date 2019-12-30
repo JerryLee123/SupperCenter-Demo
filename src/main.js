@@ -7,11 +7,18 @@ import './global-components'
 import VueAxios from './plugins/axios'
 // import axios from 'axios'
 
+import VueState from './plugins/state'
+
+import state from './state'
+
 //注册axios插件
 
 Vue.use(VueAxios,{
   baseUrl:'http://localhost:3000/'
 })
+
+//注册state插件
+Vue.use(VueState,state)
 
 
 //注册路由插件
@@ -20,5 +27,6 @@ Vue.use(VueRouter)
 new Vue({
   el: '#app',
   render: h => h(appLayout),
-  router
+  router,
+  data:state
 })
