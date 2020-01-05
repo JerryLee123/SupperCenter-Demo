@@ -23,9 +23,11 @@ export default {
   // ,
   // data() {
   //   return {
-  //     question: [],
+  //     questionList: [],
   //     error: null,
-  //     loading: false
+  //     loading: false,
+  //     remoteDataBusy:false,
+  //     hasRemoteErrors:false
   //   };
   // },
   // async created() {
@@ -34,11 +36,11 @@ export default {
   //     url: "questions"
   //   })
   //     .then(res => {
-  //       this.question = res.data;
-  //       console.log(res);
-  //       if (res.status !== 200) {
-  //         throw new error("error");
-  //       }
+  //       // this.question = res.data;
+  //       console.log(res,111);
+  //       // if (res.status !== 200) {
+  //       //   throw new error("error");
+  //       // }
   //     })
   //     .catch(e => {
   //       console.log(e);

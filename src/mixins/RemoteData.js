@@ -16,11 +16,11 @@ export default function (resources) {
       //   remoteDataLoading: 0
       // }
     },
-    computed:{
-      remoteDataBusy (){
-        return this.$data.remoteDataLoading !==0
+    computed: {
+      remoteDataBusy() {
+        return this.$data.remoteDataLoading !== 0
       },
-      hasRemoteErrors(){
+      hasRemoteErrors() {
         return Object.keys(this.$data.remoteErrors).some(
           key => this.$data.remoteErrors[key]
         )
@@ -34,11 +34,11 @@ export default function (resources) {
           // this.$data[key] = await this.$axios({
           //   url
           // })
-
+          // console.log(url,key)
           await this.$axios({
             url
-          }).then(res=>{
-            // console.log(res)
+          }).then(res => {
+            // console.log(res,11)
             this.$data[key] = res.data
           })
 
@@ -54,7 +54,7 @@ export default function (resources) {
     created() {
       for (const key in resources) {
         let url = resources[key]
-        this.axiosResource(key,url)
+        this.axiosResource(key, url)
       }
     }
   }

@@ -2,6 +2,7 @@
   <nav class="menu">
     <router-link :to="{name:'home'}" exact>home</router-link>
     <router-link :to="{name:'faq'}">faq</router-link>
+    <router-link :to="{name:'login'}">login</router-link>
   </nav>
 </template>
 
